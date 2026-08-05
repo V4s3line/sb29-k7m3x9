@@ -128,6 +128,66 @@ p strong { color: var(--text); font-weight: 700; }
 }
 @keyframes bob { 0%,100% { transform: translateY(0) } 50% { transform: translateY(5px) } }
 
+/* ── Кнопка звука ──────────────────────────────────────────── */
+.sound-btn {
+  position: fixed;
+  top: calc(env(safe-area-inset-top) + 22px);
+  left: 12px;
+  z-index: 70;
+  width: 38px; height: 38px;
+  padding: 0;
+  border-radius: 50%;
+  border: 2px solid var(--gold);
+  background: #08070Ac9;
+  font-size: 16px;
+  line-height: 1;
+  display: grid; place-items: center;
+}
+.sound-btn.on { animation: pulse 2s ease-in-out infinite; }
+@keyframes pulse {
+  0%,100% { box-shadow: 0 0 0 0 #FFE80055 }
+  50% { box-shadow: 0 0 0 7px #FFE80000 }
+}
+
+/* ── Обучалка по пасхалкам ─────────────────────────────────── */
+.tutorial {
+  position: absolute;
+  top: calc(env(safe-area-inset-top) + 54px);
+  right: 2px;
+  width: 200px; height: 130px;
+  pointer-events: none;
+  z-index: 8;
+  transition: opacity .5s ease;
+}
+.tutorial.gone { opacity: 0; }
+.tutorial svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.tutorial path {
+  stroke: var(--gold);
+  stroke-width: 2.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  filter: drop-shadow(0 0 6px #FFE80055);
+}
+.tut-ring  { stroke-dasharray: 300; stroke-dashoffset: 300; animation: draw 1s ease-out .9s forwards; }
+.tut-arrow { stroke-dasharray: 120; stroke-dashoffset: 120; animation: draw .6s ease-out 1.7s forwards; }
+.tut-tip   { stroke-dasharray: 40;  stroke-dashoffset: 40;  animation: draw .3s ease-out 2.2s forwards; }
+@keyframes draw { to { stroke-dashoffset: 0 } }
+
+.tut-label {
+  position: absolute;
+  right: 4px; bottom: 0;
+  width: 165px;
+  font-family: var(--mono);
+  font-size: 11px;
+  line-height: 1.5;
+  color: var(--gold);
+  text-align: right;
+  opacity: 0;
+  animation: fadein .5s ease-out 2.4s forwards;
+}
+.tut-label b { color: #fff; }
+@keyframes fadein { to { opacity: 1 } }
+
 /* ── Фото-мем ──────────────────────────────────────────────── */
 .meme {
   margin: 0; position: relative; border: 3px solid var(--gold);
@@ -449,6 +509,9 @@ button.wrong { background: var(--magenta); color: #fff; border-color: var(--mage
 
 <div class="bars" id="bars"></div>
 
+<audio id="bgm" src="img/track.m4a" loop preload="auto"></audio>
+<button class="sound-btn" id="sound-btn" type="button" aria-label="Звук">🔇</button>
+
 <div class="deck" id="deck">
 
   <!-- 0 ─ обложка -->
@@ -472,6 +535,17 @@ button.wrong { background: var(--magenta); color: #fff; border-color: var(--mage
     </div>
     <button class="egg-btn" type="button" data-egg="testo"
             style="right:var(--pad); top:calc(env(safe-area-inset-top) + 64px)">Ампула<br>тестостерона</button>
+
+    <div class="tutorial" id="tutorial" aria-hidden="true">
+      <svg viewBox="0 0 200 130" fill="none">
+        <!-- обводка вокруг кнопки: она в правом верхнем углу -->
+        <path class="tut-ring" d="M186 10c-16-6-46-8-70-4-22 4-33 14-30 24 3 11 22 18 48 19 24 1 47-3 55-11 7-7 4-16-6-22-4-2-9-4-15-5"/>
+        <!-- короткая стрелка снизу к кнопке -->
+        <path class="tut-arrow" d="M118 96c2-14 6-24 12-32"/>
+        <path class="tut-tip" d="M124 68l7 9M131 77l-11 4"/>
+      </svg>
+      <div class="tut-label">Жми жёлтые кнопки —<br>их <b>11</b> по всем экранам</div>
+    </div>
   </section>
 
   <!-- 1 ─ статистика: объём -->
@@ -697,11 +771,11 @@ button.wrong { background: var(--magenta); color: #fff; border-color: var(--mage
         </div>
         <div class="gift-item">
           <div class="ic">🍬</div>
-          <div><b>Протеиновые конфеты</b><span>«Видел вчера протеиновый конфеты. Это тебе так. На подумать» — 15 июня. Подумал.</span></div>
+          <div><b>Конфеты с креатином</b><span>Твой же лайфхак от 9 июня: сначала глоток воды, потом закидывать. С конфетами это уже не понадобится.</span></div>
         </div>
         <div class="gift-item">
-          <div class="ic">🪪</div>
-          <div><b>Справка, что тебе 29</b><span>Заверенная. С печатью. Показывать на кассе вместо удостоверения.</span></div>
+          <div class="ic">🎣</div>
+          <div><b>Сертификат на рыбалку</b><span>Выборг, снасти мои, дата на твой выбор. Талон напечатается дальше по странице.</span></div>
         </div>
       </div>
     </div>
@@ -927,6 +1001,44 @@ button.wrong { background: var(--magenta); color: #fff; border-color: var(--mage
   }, { threshold: [.55] });
   slides.forEach(s => io.observe(s));
 
+  /* ── Музыка. Автозапуск со звуком телефон запрещает,
+        поэтому включаем на первом касании экрана ─────────────── */
+  const bgm = document.getElementById('bgm');
+  const soundBtn = document.getElementById('sound-btn');
+  bgm.volume = 1;
+  let started = false;
+
+  function startMusic() {
+    if (started) return;
+    started = true;
+    bgm.play().then(() => {
+      soundBtn.textContent = '🔊';
+      soundBtn.classList.add('on');
+    }).catch(() => { started = false; });
+  }
+  ['pointerdown', 'touchstart', 'scroll', 'keydown'].forEach(ev =>
+    document.addEventListener(ev, startMusic, { once: false, passive: true }));
+
+  soundBtn.addEventListener('click', e => {
+    e.stopPropagation();
+    if (bgm.paused) {
+      bgm.play();
+      soundBtn.textContent = '🔊';
+      soundBtn.classList.add('on');
+    } else {
+      bgm.pause();
+      soundBtn.textContent = '🔇';
+      soundBtn.classList.remove('on');
+    }
+  });
+
+  // сирена не должна перекрикивать музыку
+  const duckFor = ms => {
+    if (bgm.paused) return;
+    bgm.volume = 0.25;
+    setTimeout(() => { bgm.volume = 1; }, ms);
+  };
+
   /* ── Пасхалки ────────────────────────────────────────────── */
   document.querySelectorAll('.egg-btn').forEach(btn => {
     btn.addEventListener('click', () => {
@@ -935,11 +1047,13 @@ button.wrong { background: var(--magenta); color: #fff; border-color: var(--mage
       document.querySelectorAll('.egg-panel.on').forEach(p => p.classList.remove('on'));
       panel.classList.add('on');
       btn.classList.add('used');
+      document.getElementById('tutorial')?.classList.add('gone');
       if (btn.dataset.egg === 'alarm') {
         const s = btn.closest('.slide');
         s.classList.add('alarm-flash');
         setTimeout(() => s.classList.remove('alarm-flash'), 2400);
         siren();
+        duckFor(2400);
       }
       if (btn.dataset.egg === 'testo') {
         const s = btn.closest('.slide');
