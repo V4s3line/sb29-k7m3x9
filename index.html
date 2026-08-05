@@ -33,6 +33,17 @@
   --pad: 20px;
 }
 
+/* iPhone 16 Pro и другие большие экраны: больше воздуха */
+@media (min-width: 400px) and (min-height: 860px) {
+  :root { --pad: 22px; }
+  .slide { gap: 14px; }
+  .game-q { font-size: 17.5px; padding: 17px 15px; }
+  .bubble { font-size: 16px; }
+  p { font-size: 16.5px; }
+  .step { font-size: 15.5px; padding: 13px 14px; }
+  .legend { flex: 0 0 82%; }
+}
+
 * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 
 html, body {
@@ -522,7 +533,7 @@ button.wrong { background: var(--magenta); color: #fff; border-color: var(--mage
       <div class="age">29</div>
     </div>
     <figure class="meme" style="max-height:34dvh">
-      <img src="img/boat.jpg" loading="lazy" decoding="async" alt="Ты на лодке" style="object-fit:cover;object-position:center 24%;max-height:34dvh">
+      <img src="img/boat.jpg" loading="lazy" decoding="async" alt="Ты на лодке" style="object-fit:cover;object-position:center 46%;max-height:34dvh">
       <figcaption class="cap-bottom">Взгляд такой молодой</figcaption>
     </figure>
     <div class="tap-hint">
@@ -1016,7 +1027,9 @@ button.wrong { background: var(--magenta); color: #fff; border-color: var(--mage
       soundBtn.classList.add('on');
     }).catch(() => { started = false; });
   }
-  ['pointerdown', 'touchstart', 'scroll', 'keydown'].forEach(ev =>
+  startMusic();                       // сработает там, где браузер разрешает
+  document.addEventListener('visibilitychange', () => { if (!document.hidden) startMusic(); });
+  ['pointerdown', 'touchstart', 'touchend', 'scroll', 'keydown', 'click'].forEach(ev =>
     document.addEventListener(ev, startMusic, { once: false, passive: true }));
 
   soundBtn.addEventListener('click', e => {
