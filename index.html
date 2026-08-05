@@ -423,7 +423,22 @@ button.wrong { background: var(--magenta); color: #fff; border-color: var(--mage
 }
 
 /* ── Финал ─────────────────────────────────────────────────── */
-#final { justify-content: center; text-align: center; align-items: center; }
+#final { justify-content: center; text-align: center; align-items: stretch; gap: 14px; }
+.final-h {
+  font-size: clamp(30px, 8.4vw, 40px);
+  line-height: 1.16;
+  text-shadow: 2px 2px 0 var(--magenta), -1px -1px 0 var(--cyan);
+  -webkit-text-stroke: 1px var(--void);
+}
+.final-photo {
+  margin: 0; width: 100%;
+  border: 3px solid var(--gold); border-radius: 4px; overflow: hidden; background: #000;
+}
+.final-photo img {
+  width: 100%; display: block;
+  max-height: 34dvh; object-fit: cover; object-position: center 20%;
+}
+.final-note { font-size: 15px; line-height: 1.5; color: var(--text); }
 .sig { font-family: var(--mono); font-size: 11px; letter-spacing: .14em; color: var(--dim); text-transform: uppercase; }
 
 @media (prefers-reduced-motion: reduce) {
@@ -556,7 +571,8 @@ button.wrong { background: var(--magenta); color: #fff; border-color: var(--mage
       </div>
     </div>
     <p>По словарному запасу: <strong>10 596</strong> уникальных слов у тебя против <strong>9 512</strong> у меня.</p>
-    <div class="verdict-big">Ты умнее на <b>2 пункта</b>. Зато у меня <b>на одну хромосому больше</b> — 47 против твоих 46. И слова длиннее: 4,54 буквы против 4,46.</div>
+    <div class="verdict-big">Ты умнее на <b>2 пункта</b>. Зато у меня <b>на одну хромосому больше</b> — 47 против твоих 46.</div>
+    <div class="gifbox"><img src="img/gred.gif" loading="lazy" decoding="async" alt=""></div>
     <button class="egg-btn" type="button" data-egg="ai"
             style="right:var(--pad); bottom:calc(env(safe-area-inset-bottom) + 16px)">Спросить<br>нейросеть</button>
   </section>
@@ -758,19 +774,20 @@ button.wrong { background: var(--magenta); color: #fff; border-color: var(--mage
     </div>
   </section>
 
-  <!-- 15 ─ финал -->
+  <!-- финал -->
   <section class="slide" id="final">
     <div class="mark solo">06.08.2026</div>
-    <h1>С днём<br>рождения,<br>жаба ебаная</h1>
-    <figure class="meme" style="max-height:30dvh">
-      <img src="img/cake.jpg" loading="lazy" decoding="async" alt="Ты со свечами" style="object-fit:cover;object-position:center 16%;max-height:30dvh">
-      <figcaption class="cap-bottom">Три года назад ты выглядел так же</figcaption>
+
+    <h1 class="final-h">С днём рождения,<br>жаба ебаная</h1>
+
+    <figure class="final-photo">
+      <img src="img/cake.jpg" loading="lazy" decoding="async" alt="Ты со свечами">
     </figure>
-    <figure class="meme" style="max-height:20dvh">
-      <img src="img/scarf.jpg" loading="lazy" decoding="async" alt="" style="object-fit:cover;object-position:center 62%;max-height:20dvh">
-      <figcaption class="cap-bottom">Ещё увидимся</figcaption>
-    </figure>
+
+    <p class="final-note">Три года назад ты задувал свечи с тем же лицом.<br>Ничего не изменилось — и слава богу.</p>
+
     <div class="sig">♂ ес плиз ♂</div>
+
     <button class="egg-btn" type="button" data-egg="final"
             style="left:var(--pad); bottom:calc(env(safe-area-inset-bottom) + 16px)">Не нажимать</button>
   </section>
@@ -842,7 +859,7 @@ button.wrong { background: var(--magenta); color: #fff; border-color: var(--mage
 
 <div class="egg-panel" id="egg-china">
   <div class="eh">Четыре термоса</div>
-  <img src="img/gred.gif" loading="lazy" decoding="async" alt="">
+  <img src="img/scarf.jpg" loading="lazy" decoding="async" alt="">
   <p>Декабрь, Китай. Не понял переводчик, пошёл за носками, вернулся — дают четыре термоса.</p>
   <p style="color:var(--gold)">«Теперь у меня пакет с одеждой и пакет с термосами».</p>
   <button class="close" type="button">Закрыть ✕</button>
