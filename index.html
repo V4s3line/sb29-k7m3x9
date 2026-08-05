@@ -248,6 +248,7 @@ p strong { color: var(--text); font-weight: 700; }
 .meme {
   margin: 0; position: relative; border: 3px solid var(--gold);
   border-radius: 4px; overflow: hidden; background: #000; display: flex;
+  flex: 0 0 auto;
 }
 .meme img { width: 100%; height: auto; display: block; }
 .meme figcaption {
@@ -267,7 +268,7 @@ p strong { color: var(--text); font-weight: 700; }
 
 .gifbox {
   border: 2px solid var(--magenta); border-radius: 4px; overflow: hidden;
-  display: flex; background: #000;
+  display: flex; background: #000; flex: 0 0 auto;
 }
 .gifbox img { width: 100%; display: block; }
 .shot { width: 100%; max-height: 150px; object-fit: cover; object-position: center 42%;
@@ -708,7 +709,6 @@ button.wrong { background: var(--magenta); color: #fff; border-color: var(--mage
         <div class="pillar me"><span class="val">117</span><span class="colwrap"><i class="col" data-h="93"></i></span><span class="who2">Я</span></div>
       </div>
     </div>
-    <p>По словарному запасу: <strong>10 596</strong> уникальных слов у тебя против <strong>9 512</strong> у меня.</p>
     <div class="verdict-big">Ты умнее на <b>2 пункта</b>. Зато у меня <b>на одну хромосому больше</b> — 47 против твоих 46.</div>
     <div class="gifbox"><img src="img/gred.gif" loading="lazy" decoding="async" alt=""></div>
     <button class="egg-btn" type="button" data-egg="ai"
@@ -717,13 +717,13 @@ button.wrong { background: var(--magenta); color: #fff; border-color: var(--mage
 
   <!-- 7 ─ мем -->
   <section class="slide">
-    <div class="mark">11 июня ты сказал, что забыл сфоткаться</div>
+    <div class="mark">Ты говорил, что забыл сфоткаться</div>
     <figure class="meme">
       <img src="img/gymselfie.jpg" loading="lazy" decoding="async" alt="Ты в раздевалке зала">
       <figcaption class="cap-top">Человек который выходит<br>в такой футболке<br>на тренировку в 6 утра</figcaption>
       <figcaption class="cap-bottom">Познал жизнь</figcaption>
     </figure>
-    <p class="tiny">Фотка нашлась. 22 июня, «ради нее только в зал пошел».</p>
+    <p class="tiny">Фотка нашлась. «Ради нее только в зал пошел».</p>
     <button class="egg-btn" type="button" data-egg="china"
             style="left:var(--pad); bottom:calc(env(safe-area-inset-bottom) + 16px)">Сувенир<br>из Китая</button>
   </section>
@@ -749,27 +749,22 @@ button.wrong { background: var(--magenta); color: #fff; border-color: var(--mage
     <h2>Что войдёт<br>в учебники</h2>
     <div class="legends">
       <article class="legend">
-        <div class="date">24.07</div>
         <div class="ttl">Полтора часа<br>на сборы в зал</div>
         <div class="body"><q>Месяц в зал не ходил. Наконец то взял себя в свои маленькие, слабенькие, тоненькие ручки. 40 минут гладил трусы свежие в зал. Собирался блять 1,5 часа. И побежал пить пиво в блядюжник какой то вместо зала)</q></div>
       </article>
       <article class="legend">
-        <div class="date">20.07</div>
         <div class="ttl">Лаваццо<br>и поцелуи</div>
         <div class="body">Строчка, услышанная тобой по радио: <q>Пока есть кофе машины — льеться Лаваццо, так давай целоваться, давай целоваться</q>. С тех пор она не выходит из головы ни у кого.</div>
       </article>
       <article class="legend">
-        <div class="date">06.07</div>
         <div class="ttl">Телевизор<br>Шрёдингера</div>
         <div class="body">Полдня вешали новый. Повесили. Лагает. Сняли. Повесили старый — и он внезапно заработал идеально. <q>Так пол дня я проебал.</q></div>
       </article>
       <article class="legend">
-        <div class="date">22.06</div>
         <div class="ttl">Козявки<br>в топ-5</div>
         <div class="body"><q>Входят ли козявки в топ 20 частей тела. Я думаю да, однозначно входят. А в топ 10 — и в топ 10 входят. И даже в топ 5 входят.</q> Наука промолчала.</div>
       </article>
       <article class="legend">
-        <div class="date">22.06</div>
         <div class="ttl">Резинка-<br>убийца</div>
         <div class="body"><q>Она старая уже пиздец. Там дырка в ней такая. Я боюсь один день она мне по еблу даст). Надо новую себе замутить)</q></div>
       </article>
@@ -785,7 +780,7 @@ button.wrong { background: var(--magenta); color: #fff; border-color: var(--mage
   <section class="slide" id="g2">
     <div class="mark">Испытание второе</div>
     <h2>Что было дальше?</h2>
-    <div class="game-q" id="q2-text">26 июня. Девушка перед тобой увидела на земле пачку чипсов. Что она сделала?</div>
+    <div class="game-q" id="q2-text">Девушка перед тобой увидела на земле пачку чипсов. Что она сделала?</div>
     <div class="btn-col" id="q2-btns">
       <button type="button">Пнула, поняла что закрытая, забрала и пошла</button>
       <button type="button">Прошла мимо</button>
@@ -799,7 +794,7 @@ button.wrong { background: var(--magenta); color: #fff; border-color: var(--mage
   <section class="slide" id="g3">
     <div class="mark">Испытание третье</div>
     <h2>Собери утро<br>чемпиона</h2>
-    <p class="tiny">29 июля ты сам описал свой распорядок. Тапай по очереди.</p>
+    <p class="tiny">Ты сам описал свой распорядок. Тапай по очереди.</p>
     <div class="steps" id="steps">
       <div class="step" data-k="3"><span class="num"></span><span>Погулял с собакой</span></div>
       <div class="step" data-k="6"><span class="num"></span><span>Уложил усы</span></div>
@@ -817,7 +812,7 @@ button.wrong { background: var(--magenta); color: #fff; border-color: var(--mage
 
   <!-- 12 ─ подарок -->
   <section class="slide" id="gift-slide">
-    <div class="mark">14 июля, 13:42</div>
+    <div class="mark">Как это было</div>
     <div class="chatstack">
       <div class="bubble"><span class="who">Он</span>Женщина на кассе говорит «а Вам же есть 18 лет». Я такой ну есть. А покажите документы, а то я сомневаюсь</div>
       <div class="bubble"><span class="who">Он</span>Я говорю мне через 2 недели 29 лет, видели говорю 17 летних с такими усами</div>
@@ -835,7 +830,7 @@ button.wrong { background: var(--magenta); color: #fff; border-color: var(--mage
         </div>
         <div class="gift-item">
           <div class="ic">🍬</div>
-          <div><b>Конфеты с креатином</b><span>Твой же лайфхак от 9 июня: сначала глоток воды, потом закидывать. С конфетами это уже не понадобится.</span></div>
+          <div><b>Конфеты с креатином</b><span>Твой же лайфхак: сначала глоток воды, потом закидывать. С конфетами это уже не понадобится.</span></div>
         </div>
         <div class="gift-item">
           <div class="ic">🎣</div>
@@ -852,7 +847,7 @@ button.wrong { background: var(--magenta); color: #fff; border-color: var(--mage
 
     <figure class="meme" id="inv-photo" style="max-height:24dvh">
       <img src="img/fish.jpg" loading="lazy" decoding="async" alt="Ты на рыбалке" style="object-fit:cover;object-position:center 20%;max-height:26dvh">
-      <figcaption class="cap-bottom">Вяленая рыба ещё лежит</figcaption>
+      <figcaption class="cap-bottom">Негром стал</figcaption>
     </figure>
 
     <div class="arena" id="arena">
@@ -951,7 +946,7 @@ button.wrong { background: var(--magenta); color: #fff; border-color: var(--mage
 <div class="egg-panel" id="egg-specs">
   <div class="eh">Очки надеты</div>
   <img src="img/specs.jpg" loading="lazy" decoding="async" alt="">
-  <p>22 июня, 08:52: <b style="color:var(--gold)">«Раздупляй свое очко. Надевай свои очки»</b>. Ты сказал — ты и сделал.</p>
+  <p><b style="color:var(--gold)">«Раздупляй свое очко. Надевай свои очки»</b> — ты сказал, ты и сделал.</p>
   <button class="close" type="button">Закрыть ✕</button>
 </div>
 
@@ -973,7 +968,7 @@ button.wrong { background: var(--magenta); color: #fff; border-color: var(--mage
 <div class="egg-panel" id="egg-creatine">
   <div class="eh">Лайфхак от чемпиона</div>
   <img src="img/gbro.gif" loading="lazy" decoding="async" alt="">
-  <p>9 июня, дословно: <b style="color:var(--gold)">«Чтобы не задыхаться от креатина, надо перед тем как кидать креатин сделать маленький глоток воды, просто во рту оставить чуть воды и потом закинуть креатин»</b>.</p>
+  <p>Дословно: <b style="color:var(--gold)">«Чтобы не задыхаться от креатина, надо перед тем как кидать креатин сделать маленький глоток воды, просто во рту оставить чуть воды и потом закинуть креатин»</b>.</p>
   <p>Нобелевскую пока не дали.</p>
   <button class="close" type="button">Закрыть ✕</button>
 </div>
@@ -982,14 +977,14 @@ button.wrong { background: var(--magenta); color: #fff; border-color: var(--mage
   <div class="eh">На радио сейчас</div>
   <img src="img/rainbow.jpg" loading="lazy" decoding="async" alt="">
   <p style="color:var(--gold);font-size:16px;line-height:1.5">«Пока есть кофе машины — льеться Лаваццо,<br>так давай целоваться, давай целоваться,<br>пока есть кофе машины, льется лаваццо»</p>
-  <p>20 июля. Ты переслал это без комментариев. Комментарии и не требовались.</p>
+  <p>Ты переслал это без комментариев. Комментарии и не требовались.</p>
   <button class="close" type="button">Закрыть ✕</button>
 </div>
 
 <div class="egg-panel" id="egg-ai">
   <div class="eh">Нейросеть отвечает</div>
   <img src="img/gpc.gif" loading="lazy" decoding="async" alt="">
-  <p>15 июня я довёл её до такого:</p>
+  <p>Я довёл её до такого:</p>
   <p style="color:var(--gold)">«Ты абсолютно прав. Я идиот.»</p>
   <p>Твоя реакция: <b>«А че он себя идиотом называет. Хуя ты довел его»</b>.</p>
   <button class="close" type="button">Закрыть ✕</button>
@@ -997,8 +992,8 @@ button.wrong { background: var(--magenta); color: #fff; border-color: var(--mage
 
 <div class="egg-panel" id="egg-china">
   <div class="eh">Четыре термоса</div>
-  <img src="img/scarf.jpg" loading="lazy" decoding="async" alt="">
-  <p>Декабрь, Китай. Не понял переводчик, пошёл за носками, вернулся — дают четыре термоса.</p>
+  <img src="img/japan.jpg" loading="lazy" decoding="async" alt="">
+  <p>Не понял переводчик, пошёл за носками, вернулся — дают четыре термоса.</p>
   <p style="color:var(--gold)">«Теперь у меня пакет с одеждой и пакет с термосами».</p>
   <button class="close" type="button">Закрыть ✕</button>
 </div>
@@ -1006,7 +1001,7 @@ button.wrong { background: var(--magenta); color: #fff; border-color: var(--mage
 <div class="egg-panel" id="egg-morning">
   <div class="eh">Пункт девятый</div>
   <img src="img/gmorn.gif" loading="lazy" decoding="async" alt="">
-  <p>После завтрака по расписанию идёт: <b style="color:var(--gold)">«Сними пилотку»</b> — 1 июня, 14:46, сообщение целиком.</p>
+  <p>После завтрака по расписанию идёт: <b style="color:var(--gold)">«Сними пилотку»</b> — сообщение целиком.</p>
   <p>Контекста не сохранилось. Возможно, к лучшему.</p>
   <button class="close" type="button">Закрыть ✕</button>
 </div>
@@ -1205,7 +1200,7 @@ button.wrong { background: var(--magenta); color: #fff; border-color: var(--mage
   /* ── Игра 2 ──────────────────────────────────────────────── */
   const Q2 = [
     {
-      t: '26 июня. Девушка перед тобой увидела на земле пачку чипсов. Что она сделала?',
+      t: 'Девушка перед тобой увидела на земле пачку чипсов. Что она сделала?',
       opts: ['Пнула, поняла что закрытая, забрала и пошла', 'Прошла мимо', 'Выбросила в урну'],
       ok: 0, after: 'Ты написал ровно одно слово: «Хуяяяя».'
     },
@@ -1215,18 +1210,18 @@ button.wrong { background: var(--magenta); color: #fff; border-color: var(--mage
       ok: 1, after: '«Я вот в тот день думал я реально лопну. Потому что вкусно ебать».'
     },
     {
-      t: '26 июня ты закрыл на работе историю со справками — на три месяца вперёд. Каким образом?',
+      t: 'Ты закрыл на работе историю со справками — на три месяца вперёд. Каким образом?',
       opts: ['Наконец сделал всё по-нормальному', 'Свалил на Вадима',
              'Нашёл никому не нужную справку и увеличил знаки после запятой'],
       ok: 2, after: '«Просто доебался до столба». Три месяца спокойной жизни куплены.'
     },
     {
-      t: '25 июня ты расписал меню на выходные. Как назывался вариант завтрака с омлетом?',
+      t: 'Ты расписал меню на выходные. Как назывался вариант завтрака с омлетом?',
       opts: ['Гига грязная классика', 'Новая классика', 'Базовая база'],
       ok: 0, after: 'Именно. «Новой классикой» была творожная лепёшка — не путай.'
     },
     {
-      t: '30 июня, 21:35. Ты пошёл выкидывать мусор. Что ты там встретил?',
+      t: 'Ты пошёл выкидывать мусор. Что ты там встретил?',
       opts: ['Соседа с собакой', 'Полу рака, полу хуя', 'Кота'],
       ok: 1, img: 'trash',
       after: 'Твоя формулировка: «Полу рак. Полу хуй. Иду мусор выкидывать — а там он».'
