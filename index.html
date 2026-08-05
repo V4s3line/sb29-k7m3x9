@@ -1,0 +1,741 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#08070A">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>♂ Синьер Бадминтон, 29 ♂</title>
+</head>
+<body>
+
+<style>
+/* ─────────────────────────────────────────────────────────────
+   Мир страницы: мем-паблик + гачи-эстетика.
+   Чёрный VHS-экран, кислотное золото, маджента. Одна тема.
+   ───────────────────────────────────────────────────────────── */
+:root {
+  --void: #08070A;
+  --panel: #14121A;
+  --panel-2: #1E1A28;
+  --gold: #FFE800;
+  --magenta: #FF2E88;
+  --cyan: #22E7FF;
+  --text: #F6F3EA;
+  --dim: #9A93AD;
+
+  --meme: "Haettenschweiler", "Arial Narrow Bold", "Impact", system-ui, sans-serif;
+  --sys: -apple-system, BlinkMacSystemFont, "SF Pro Display", system-ui, sans-serif;
+  --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace;
+
+  --pad: 20px;
+}
+
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+html, body {
+  margin: 0; padding: 0;
+  background: var(--void);
+  color: var(--text);
+  font-family: var(--sys);
+  overscroll-behavior: none;
+}
+body { -webkit-font-smoothing: antialiased; }
+
+/* Развёртка строк как на старой кассете */
+body::after {
+  content: "";
+  position: fixed; inset: 0;
+  pointer-events: none;
+  z-index: 40;
+  background: repeating-linear-gradient(
+    to bottom, rgba(255,255,255,.028) 0 1px, transparent 1px 3px);
+  mix-blend-mode: overlay;
+}
+
+/* Высота в двух единицах: dvh перебивает vh там, где поддерживается,
+   а просмотрщики документов на iOS считают только vh */
+.deck {
+  height: 100vh;
+  height: 100dvh;
+  overflow-y: scroll; scroll-snap-type: y mandatory; scroll-behavior: smooth;
+}
+
+.slide {
+  height: 100vh;
+  height: 100dvh;
+  min-height: 520px;   /* не даём схлопнуться, если вьюпорт посчитан неверно */
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  padding: calc(env(safe-area-inset-top) + 52px) var(--pad)
+           calc(env(safe-area-inset-bottom) + 60px);
+  display: flex; flex-direction: column; justify-content: center; gap: 16px;
+  position: relative; overflow: hidden;
+}
+
+/* ── Прогресс ──────────────────────────────────────────────── */
+.bars {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+  display: flex; gap: 3px;
+  padding: calc(env(safe-area-inset-top) + 10px) 12px 10px;
+  background: linear-gradient(to bottom, var(--void) 55%, transparent);
+  pointer-events: none;
+}
+.bar { flex: 1; height: 2.5px; border-radius: 2px; background: #ffffff1c; overflow: hidden; }
+.bar i { display: block; height: 100%; width: 0; background: var(--gold); transition: width .35s ease; }
+
+/* ── Типографика ───────────────────────────────────────────── */
+.mark {
+  font-family: var(--mono);
+  font-size: 11px; letter-spacing: .2em; text-transform: uppercase;
+  color: var(--gold);
+  display: flex; align-items: center; gap: 8px;
+}
+.mark::before, .mark::after { content: "♂"; font-size: 14px; color: var(--magenta); }
+.mark.solo::after { content: ""; }
+
+h1 {
+  font-family: var(--meme);
+  font-size: clamp(46px, 15vw, 64px);
+  line-height: .98;
+  letter-spacing: .01em;
+  text-transform: uppercase;
+  font-weight: 900;
+  margin: 0;
+  color: var(--text);
+  -webkit-text-stroke: 2px var(--void);
+  text-shadow:
+    3px 3px 0 var(--magenta),
+    -2px -2px 0 var(--cyan);
+  text-wrap: balance;
+}
+
+h2 {
+  font-family: var(--meme);
+  font-size: clamp(30px, 9vw, 42px);
+  line-height: 1.04;
+  text-transform: uppercase;
+  font-weight: 900;
+  letter-spacing: .01em;
+  margin: 0;
+  color: var(--gold);
+  text-shadow: 2px 2px 0 #00000090;
+  text-wrap: balance;
+}
+
+h3 { font-family: var(--sys); font-size: 20px; font-weight: 800; letter-spacing: -.02em; margin: 0; line-height: 1.15; }
+
+p { margin: 0; font-size: 16px; line-height: 1.45; color: var(--dim); }
+p strong { color: var(--text); font-weight: 700; }
+.tiny { font-family: var(--mono); font-size: 11.5px; line-height: 1.5; color: var(--dim); }
+
+/* ── Обложка ───────────────────────────────────────────────── */
+#s0 { justify-content: space-between; }
+.age {
+  font-family: var(--meme);
+  font-size: clamp(120px, 44vw, 190px);
+  line-height: .8;
+  color: var(--gold);
+  text-shadow: 5px 5px 0 var(--magenta), -3px -3px 0 var(--cyan);
+  letter-spacing: -.02em;
+  animation: jitter 5s steps(1) infinite;
+}
+@keyframes jitter {
+  0%, 92%, 100% { transform: none }
+  93% { transform: translate(-2px, 1px) }
+  95% { transform: translate(2px, -1px) }
+  97% { transform: translate(-1px, 0) }
+}
+
+.tap-hint {
+  display: flex; align-items: center; gap: 10px;
+  font-family: var(--mono); font-size: 11px; letter-spacing: .14em;
+  color: var(--dim); text-transform: uppercase;
+}
+.chev {
+  width: 26px; height: 26px; border-radius: 50%;
+  border: 1px solid var(--gold);
+  display: grid; place-items: center;
+  animation: bob 1.9s ease-in-out infinite;
+}
+@keyframes bob { 0%,100% { transform: translateY(0) } 50% { transform: translateY(5px) } }
+
+/* ── Мем-карточка: верхний и нижний текст ──────────────────── */
+.memecard {
+  background: var(--panel);
+  border: 2px solid var(--gold);
+  border-radius: 4px;
+  padding: 16px 14px;
+  display: flex; flex-direction: column; gap: 10px;
+}
+.memecard .top-text,
+.memecard .bottom-text {
+  font-family: var(--meme);
+  text-transform: uppercase;
+  font-size: 21px;
+  line-height: 1.06;
+  text-align: center;
+  color: #fff;
+  -webkit-text-stroke: 1.5px var(--void);
+  text-shadow: 2px 2px 0 var(--void);
+}
+.memecard .mid { font-size: 14.5px; line-height: 1.45; color: var(--dim); text-align: center; }
+
+/* ── Реплики ───────────────────────────────────────────────── */
+.chatstack { display: flex; flex-direction: column; gap: 7px; }
+.bubble {
+  background: var(--panel);
+  border-left: 3px solid var(--magenta);
+  border-radius: 4px 12px 12px 4px;
+  padding: 11px 13px;
+  font-size: 15.5px; line-height: 1.4; color: var(--text);
+  align-self: flex-start; max-width: 92%;
+}
+.bubble.mine { border-left: none; border-right: 3px solid var(--cyan); border-radius: 12px 4px 4px 12px; align-self: flex-end; }
+.bubble .who {
+  display: block; font-family: var(--mono); font-size: 10px;
+  letter-spacing: .12em; text-transform: uppercase; color: var(--gold); margin-bottom: 4px;
+}
+
+/* ── Кнопки ────────────────────────────────────────────────── */
+button {
+  font-family: var(--sys); font-size: 15.5px; font-weight: 700;
+  color: var(--text);
+  background: var(--panel-2);
+  border: 2px solid #ffffff1f;
+  border-radius: 6px;
+  padding: 14px 12px;
+  cursor: pointer;
+  transition: transform .12s ease, background .2s, border-color .2s, color .2s;
+  touch-action: manipulation;
+  text-align: left;
+}
+button:active { transform: scale(.97); }
+button:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+button.right { background: var(--gold); color: var(--void); border-color: var(--gold); }
+button.wrong { background: var(--magenta); color: #fff; border-color: var(--magenta); }
+button.done { opacity: .4; }
+
+.btn-col { display: flex; flex-direction: column; gap: 8px; }
+.btn-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.btn-row button { text-align: center; }
+
+/* ── Блок игры ─────────────────────────────────────────────── */
+.game-q {
+  background: var(--panel);
+  border: 2px dashed #ffffff24;
+  border-radius: 6px;
+  padding: 16px 14px;
+  font-size: 17px; line-height: 1.35; font-weight: 500;
+  min-height: 92px; display: flex; align-items: center;
+}
+.game-meta {
+  display: flex; justify-content: space-between;
+  font-family: var(--mono); font-size: 11px; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--dim);
+}
+.verdict { font-size: 15px; line-height: 1.4; color: var(--gold); min-height: 40px; font-weight: 600; }
+
+/* ── Сортировка «утро чемпиона» ────────────────────────────── */
+.steps { display: flex; flex-direction: column; gap: 6px; }
+.step {
+  background: var(--panel-2);
+  border: 2px solid #ffffff17;
+  border-radius: 6px;
+  padding: 12px 13px;
+  font-size: 15px; font-weight: 600;
+  display: flex; align-items: center; gap: 10px;
+  cursor: pointer;
+  transition: transform .12s, background .2s, border-color .2s, opacity .25s;
+}
+.step:active { transform: scale(.98); }
+.step .num {
+  font-family: var(--mono); font-size: 12px;
+  width: 22px; height: 22px; flex: 0 0 22px;
+  border-radius: 50%; border: 1.5px solid var(--dim);
+  display: grid; place-items: center; color: var(--dim);
+}
+.step.taken { background: transparent; border-color: var(--gold); opacity: .55; }
+.step.taken .num { border-color: var(--gold); color: var(--gold); }
+.step.shake { animation: shake .35s; border-color: var(--magenta); }
+@keyframes shake {
+  0%,100% { transform: translateX(0) }
+  25% { transform: translateX(-6px) }
+  75% { transform: translateX(6px) }
+}
+
+/* ── Летопись ──────────────────────────────────────────────── */
+.legends {
+  display: flex; gap: 10px; overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  margin: 0 calc(var(--pad) * -1); padding: 4px var(--pad);
+  -webkit-overflow-scrolling: touch; scrollbar-width: none;
+}
+.legends::-webkit-scrollbar { display: none; }
+.legend {
+  flex: 0 0 80%; scroll-snap-align: center;
+  background: var(--panel);
+  border: 2px solid var(--gold);
+  border-radius: 4px;
+  padding: 16px 14px;
+  display: flex; flex-direction: column; gap: 9px;
+}
+.legend .date { font-family: var(--mono); font-size: 11px; letter-spacing: .14em; color: var(--magenta); }
+.legend .ttl {
+  font-family: var(--meme); text-transform: uppercase;
+  font-size: 22px; line-height: 1.04; color: var(--gold);
+}
+.legend .body { font-size: 14px; line-height: 1.45; color: var(--dim); }
+.legend .body q { color: var(--text); font-style: italic; }
+
+/* ── Подарок ───────────────────────────────────────────────── */
+.gift-box {
+  background: var(--panel);
+  border: 2px dashed var(--gold);
+  border-radius: 6px;
+  padding: 26px 18px; text-align: center;
+  display: flex; flex-direction: column; gap: 10px; align-items: center;
+  cursor: pointer;
+}
+.gift-box:active { background: var(--panel-2); }
+.gift-reveal { display: none; flex-direction: column; gap: 12px; }
+.gift-reveal.on { display: flex; animation: rise .5s cubic-bezier(.2,.9,.3,1.2) both; }
+@keyframes rise { from { opacity: 0; transform: translateY(20px) } to { opacity: 1; transform: none } }
+.gift-list { display: flex; flex-direction: column; gap: 8px; }
+.gift-item {
+  display: flex; gap: 11px; align-items: flex-start;
+  background: var(--panel); border-radius: 4px; padding: 12px 13px;
+  border-left: 3px solid var(--magenta);
+}
+.gift-item .ic { font-size: 20px; line-height: 1.1; }
+.gift-item b { font-size: 15px; display: block; margin-bottom: 2px; }
+.gift-item span { font-size: 13px; color: var(--dim); line-height: 1.4; }
+
+/* ── Приглашение ───────────────────────────────────────────── */
+.dates { display: flex; flex-direction: column; gap: 8px; }
+.date-btn { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+.date-btn .d { font-family: var(--mono); font-size: 13px; color: var(--gold); }
+.arena { position: relative; height: 128px; border-radius: 6px; background: var(--panel); border: 2px solid #ffffff14; overflow: hidden; }
+.arena button { position: absolute; text-align: center; }
+#no { right: 14px; top: 44px; transition: left .18s ease, top .18s ease; }
+
+/* ── Финал ─────────────────────────────────────────────────── */
+#final { justify-content: center; text-align: center; align-items: center; }
+.sig { font-family: var(--mono); font-size: 11px; letter-spacing: .14em; color: var(--dim); text-transform: uppercase; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+  .deck { scroll-behavior: auto; }
+}
+</style>
+
+<div class="bars" id="bars"></div>
+
+<div class="deck" id="deck">
+
+  <!-- ── 0 обложка ─────────────────────────────────────────── -->
+  <section class="slide" id="s0">
+    <div class="mark">Досье · 06.08.2026</div>
+
+    <div>
+      <h1>Синьер<br>бадминтон</h1>
+      <div class="age">29</div>
+    </div>
+
+    <div class="memecard">
+      <div class="mid">«Мне через 2 недели 29 лет, видели 17-летних с такими усами?»<br>— <b style="color:var(--gold)">«Да хуй знает, всякое сейчас бывает. У вас просто взгляд такой молодой»</b></div>
+    </div>
+
+    <div class="tap-hint">
+      <div class="chev">
+        <svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+          <path d="M2 4l4 4 4-4" stroke="#FFE800" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      Листай вверх
+    </div>
+  </section>
+
+  <!-- ── 1 игра: кто это сказал ────────────────────────────── -->
+  <section class="slide" id="g1">
+    <div class="mark">Испытание первое</div>
+    <h2>Кто это сказал?</h2>
+    <!-- первый вопрос лежит в разметке: если скрипты не запустятся, экран не будет пустым -->
+    <div class="game-q" id="q1-text">«Куда тебе 3 творога чел ты. 3 это прям ебать. Овергир»</div>
+    <div class="btn-row">
+      <button type="button" data-a="he">Это я</button>
+      <button type="button" data-a="me">Это ты</button>
+    </div>
+    <div class="game-meta">
+      <span id="q1-num">1 / 8</span>
+      <span id="q1-score">Верно: 0</span>
+    </div>
+    <div class="verdict" id="q1-verdict"></div>
+  </section>
+
+  <!-- ── 2 летопись ────────────────────────────────────────── -->
+  <section class="slide">
+    <div class="mark">Лето 2026</div>
+    <h2>Что войдёт<br>в учебники</h2>
+    <div class="legends">
+      <article class="legend">
+        <div class="date">24.07</div>
+        <div class="ttl">Полтора часа<br>на сборы в зал</div>
+        <div class="body"><q>Месяц в зал не ходил. Наконец то взял себя в свои маленькие, слабенькие, тоненькие ручки. 40 минут гладил трусы свежие в зал. Собирался блять 1,5 часа. И побежал пить пиво в блядюжник какой то вместо зала)</q></div>
+      </article>
+
+      <article class="legend">
+        <div class="date">14.07</div>
+        <div class="ttl">Паспортный<br>контроль</div>
+        <div class="body">Кассирша не продала энергетик 28-летнему мужику с усами. Пришлось предъявлять рабочее удостоверение. Вердикт: <q>у вас просто взгляд такой молодой</q>.</div>
+      </article>
+
+      <article class="legend">
+        <div class="date">26.06</div>
+        <div class="ttl">Доебался<br>до столба</div>
+        <div class="body"><q>Нашел какую то справку ебаную которая никому в хуй не упала. И в 5 столбцах увеличил количество знаков после запятой до 2х.</q> Куплено три месяца спокойной жизни.</div>
+      </article>
+
+      <article class="legend">
+        <div class="date">06.07</div>
+        <div class="ttl">Телевизор<br>Шрёдингера</div>
+        <div class="body">Полдня вешали новый. Повесили. Лагает. Сняли. Повесили старый — и он внезапно заработал идеально. <q>Так пол дня я проебал.</q></div>
+      </article>
+
+      <article class="legend">
+        <div class="date">29.07</div>
+        <div class="ttl">Сто подтягиваний<br>после бадминтона</div>
+        <div class="body"><q>Пришел чет жестко заебанный. Сделал 100 подтягиваний. Но пиздец тяжело. Там в конце такие шакальные были.</q></div>
+      </article>
+
+      <article class="legend">
+        <div class="date">22.06</div>
+        <div class="ttl">Резинка-<br>убийца</div>
+        <div class="body"><q>Она старая уже пиздец. Там дырка в ней такая. Я боюсь один день она мне по еблу даст). Надо новую себе замутить)</q> Запомни этот слайд.</div>
+      </article>
+    </div>
+    <p class="tiny">Свайпай вбок — их шесть.</p>
+  </section>
+
+  <!-- ── 3 игра: что было дальше ───────────────────────────── -->
+  <section class="slide" id="g2">
+    <div class="mark">Испытание второе</div>
+    <h2>Что было дальше?</h2>
+    <div class="game-q" id="q2-text">14 июля. Кассирша не продаёт тебе Берн и просит документы. Что дальше?</div>
+    <div class="btn-col" id="q2-btns">
+      <button type="button">Ушёл без энергетика</button>
+      <button type="button">Показал рабочее удостоверение</button>
+      <button type="button">Позвал Алину как свидетеля</button>
+    </div>
+    <div class="game-meta">
+      <span id="q2-num">1 / 5</span>
+      <span id="q2-score">Верно: 0</span>
+    </div>
+    <div class="verdict" id="q2-verdict"></div>
+  </section>
+
+  <!-- ── 4 игра: утро чемпиона ─────────────────────────────── -->
+  <section class="slide" id="g3">
+    <div class="mark">Испытание третье</div>
+    <h2>Собери утро<br>чемпиона</h2>
+    <p class="tiny">29 июля ты сам описал свой распорядок. Расставь по порядку — тапай по очереди.</p>
+    <!-- порядок в разметке уже перемешан; data-k — правильная позиция шага -->
+    <div class="steps" id="steps">
+      <div class="step" data-k="3"><span class="num"></span><span>Погулял с собакой</span></div>
+      <div class="step" data-k="6"><span class="num"></span><span>Уложил усы</span></div>
+      <div class="step" data-k="0"><span class="num"></span><span>Посрал</span></div>
+      <div class="step" data-k="5"><span class="num"></span><span>Помылся и побрился</span></div>
+      <div class="step" data-k="2"><span class="num"></span><span>Попил воды</span></div>
+      <div class="step" data-k="7"><span class="num"></span><span>Сделал завтрак и собрал еду</span></div>
+      <div class="step" data-k="1"><span class="num"></span><span>Почистил зубы</span></div>
+      <div class="step" data-k="4"><span class="num"></span><span>Турник</span></div>
+    </div>
+    <div class="verdict" id="q3-verdict"></div>
+  </section>
+
+  <!-- ── 5 подарок ─────────────────────────────────────────── -->
+  <section class="slide" id="gift-slide">
+    <div class="mark">Вчера, 09:05</div>
+
+    <div class="chatstack">
+      <div class="bubble"><span class="who">Он</span>Там типо надо с задней линии отбить потенциальный удар. А потом сделать ротацию на переднюю линию. А потом опять вернуться назад. И так по 10-15 раз подряд</div>
+      <div class="bubble"><span class="who">Он</span>Ебаные челноки короче. Только еще с ракеткой. Сегодня такие ноги ватные блять</div>
+    </div>
+
+    <div class="gift-box" id="gift-box" role="button" tabindex="0">
+      <h3>Ракетка есть.<br>Кроссовки есть.<br>Чего не хватает?</h3>
+      <div class="tiny" style="color:var(--gold)">Нажми ♂</div>
+    </div>
+
+    <div class="gift-reveal" id="gift-reveal">
+      <div class="gift-list">
+        <div class="gift-item">
+          <div class="ic">🏸</div>
+          <div><b>Туба перьевых воланов</b><span>Тех самых, которые кончаются быстрее, чем ноги перестают быть ватными.</span></div>
+        </div>
+        <div class="gift-item">
+          <div class="ic">🥸</div>
+          <div><b>Набор для усов</b><span>Воск, расчёска, ножницы. Чтобы кассирши наконец поверили.</span></div>
+        </div>
+        <div class="gift-item">
+          <div class="ic">🥤</div>
+          <div><b>Ящик Берна</b><span>Прилагается справка, что тебе 29. Заверенная. С печатью.</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 6 приглашение ─────────────────────────────────────── -->
+  <section class="slide" id="invite">
+    <div class="mark">И последнее</div>
+    <h2>Едем<br>на рыбалку</h2>
+    <p>Вяленая рыба с прошлого раза всё ещё лежит. Выбирай дату — отказаться не выйдет.</p>
+    <div class="dates" id="dates">
+      <button type="button" class="date-btn" data-d="15–16 августа"><span>Через полторы недели</span><span class="d">15–16.08</span></button>
+      <button type="button" class="date-btn" data-d="22–23 августа"><span>В конце месяца</span><span class="d">22–23.08</span></button>
+      <button type="button" class="date-btn" data-d="29–30 августа"><span>Последние выходные</span><span class="d">29–30.08</span></button>
+    </div>
+    <div class="arena" id="arena">
+      <button type="button" id="no">Не могу</button>
+    </div>
+    <div class="verdict" id="invite-verdict"></div>
+  </section>
+
+  <!-- ── 7 финал ───────────────────────────────────────────── -->
+  <section class="slide" id="final">
+    <div class="mark solo">06.08.2026</div>
+    <h1>С днём<br>рождения,<br>усатый</h1>
+    <p style="max-width:30ch">Держи планку, синьер. И резинку тоже держи — новую, она выдержит.</p>
+    <div class="sig">♂ ес плиз ♂</div>
+  </section>
+
+</div>
+
+<script>
+(function () {
+  const deck = document.getElementById('deck');
+  const slides = [...deck.querySelectorAll('.slide')];
+
+  /* ── Прогресс сторис ─────────────────────────────────────── */
+  const bars = document.getElementById('bars');
+  slides.forEach(() => {
+    const b = document.createElement('div');
+    b.className = 'bar'; b.innerHTML = '<i></i>';
+    bars.appendChild(b);
+  });
+  const barFills = [...bars.querySelectorAll('i')];
+
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (!e.isIntersecting || e.intersectionRatio < .55) return;
+      const idx = slides.indexOf(e.target);
+      barFills.forEach((f, i) => { f.style.width = i <= idx ? '100%' : '0'; });
+    });
+  }, { threshold: [.55] });
+  slides.forEach(s => io.observe(s));
+
+  /* ── Игра 1: кто это сказал ──────────────────────────────── */
+  const Q1 = [
+    { t: 'Куда тебе 3 творога чел ты. 3 это прям ебать. Овергир', who: 'he' },
+    { t: 'А там один творог оставался, я решил, ему грустно будет одному. Взял с собой', who: 'me' },
+    { t: 'Ты выглядишь как бичара опухший у вокзала. В сморчках утонул?)', who: 'he' },
+    { t: 'Ты в курсе, что голубцы входят в топ 3 межгалактических блюд', who: 'me' },
+    { t: 'Маньячное погоняло «Нейросетский душитель»', who: 'he' },
+    { t: 'Здорова, синьер бадминтон, ты как, заряжен?', who: 'me' },
+    { t: 'Блять, почему придумали колу зеро, но не придумали пиво зеро?', who: 'he' },
+    { t: 'Ебаные челноки короче. Только еще с ракеткой. Сегодня такие ноги ватные блять', who: 'he' }
+  ];
+  runQuiz({
+    data: Q1, textEl: 'q1-text', numEl: 'q1-num', scoreEl: 'q1-score', verdictEl: 'q1-verdict',
+    btns: [...document.querySelectorAll('#g1 .btn-row button')],
+    quote: true,
+    finish: (s, n) => s >= n - 1 ? 'Почти всё угадал. Подозрительно хорошо себя знаешь.'
+      : s >= n / 2 ? `${s} из ${n}. Половину своих же реплик приписал мне. Классика.`
+      : `${s} из ${n}. Ты вообще читаешь, что сам пишешь?`
+  });
+
+  /* ── Игра 2: что было дальше ─────────────────────────────── */
+  const Q2 = [
+    {
+      t: '14 июля. Кассирша не продаёт тебе Берн и просит документы. Что дальше?',
+      opts: ['Ушёл без энергетика', 'Показал рабочее удостоверение', 'Позвал Алину как свидетеля'],
+      ok: 1,
+      after: 'Ты показал удостоверение и услышал: «у вас просто взгляд такой молодой».'
+    },
+    {
+      t: '24 июля. Ты 40 минут гладил трусы и полтора часа собирался в зал. Куда ты пошёл?',
+      opts: ['В зал, конечно', 'Пить пиво в блядюжник', 'Домой спать'],
+      ok: 1,
+      after: 'Трусы поглажены зря. Зал не увидел тебя ещё месяц.'
+    },
+    {
+      t: '6 июля. Полдня вешали новый телевизор. Чем кончилось?',
+      opts: ['Всё заработало идеально', 'Он упал', 'Лагал — сняли, повесили старый, старый заработал'],
+      ok: 2,
+      after: '«Так пол дня я проебал я». Технологии не для нас.'
+    },
+    {
+      t: '26 июня. Девушка перед тобой увидела на земле пачку чипсов. Что она сделала?',
+      opts: ['Пнула, поняла что закрытая, забрала и пошла', 'Прошла мимо', 'Выбросила в урну'],
+      ok: 0,
+      after: 'Ты написал ровно одно слово: «Хуяяяя».'
+    },
+    {
+      t: 'Китай. Ты заказал четыре тефтельки. Что принесли?',
+      opts: ['Четыре тефтельки', 'Таз курицы и четыре огромных котлеты', 'Перепутали заказ'],
+      ok: 1,
+      after: '«Я вот в тот день думал я реально лопну. Потому что вкусно ебать».'
+    }
+  ];
+
+  let i2 = 0, s2 = 0;
+  const q2t = document.getElementById('q2-text');
+  const q2b = document.getElementById('q2-btns');
+  const q2n = document.getElementById('q2-num');
+  const q2s = document.getElementById('q2-score');
+  const q2v = document.getElementById('q2-verdict');
+
+  function render2() {
+    const q = Q2[i2];
+    q2t.textContent = q.t;
+    q2n.textContent = `${i2 + 1} / ${Q2.length}`;
+    q2v.textContent = '';
+    q2b.innerHTML = '';
+    q.opts.forEach((label, k) => {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.textContent = label;
+      b.addEventListener('click', () => {
+        if (b.disabled) return;
+        const correct = k === q.ok;
+        b.classList.add(correct ? 'right' : 'wrong');
+        if (correct) s2++;
+        else [...q2b.children][q.ok].classList.add('right');
+        q2s.textContent = 'Верно: ' + s2;
+        [...q2b.children].forEach(x => x.disabled = true);
+        q2v.textContent = q.after;
+        setTimeout(() => {
+          i2++;
+          if (i2 < Q2.length) return render2();
+          q2t.textContent = 'Испытание пройдено.';
+          q2n.textContent = 'Готово';
+          q2b.innerHTML = '';
+          q2v.textContent = s2 >= 4 ? 'Ты помнишь своё лето лучше, чем я — своё.'
+            : `${s2} из ${Q2.length}. Половину этих историй ты уже забыл, а я записал.`;
+        }, 2100);
+      });
+      q2b.appendChild(b);
+    });
+  }
+  render2();
+
+  /* ── Игра 3: утро чемпиона ───────────────────────────────── */
+  const stepEls = [...document.querySelectorAll('#steps .step')];
+  const q3v = document.getElementById('q3-verdict');
+  let expect = 0;
+
+  stepEls.forEach(el => {
+    const k = +el.dataset.k;
+    el.addEventListener('click', () => {
+      if (el.classList.contains('taken')) return;
+      if (k !== expect) {
+        el.classList.add('shake');
+        setTimeout(() => el.classList.remove('shake'), 380);
+        q3v.textContent = 'Не, до этого было другое. Вспоминай.';
+        return;
+      }
+      el.classList.add('taken');
+      el.querySelector('.num').textContent = expect + 1;
+      expect++;
+      q3v.textContent = expect === stepEls.length
+        ? 'Идеально. Восемь пунктов до того, как выйти из дома. Швейцарские часы завидуют.'
+        : '';
+    });
+  });
+
+  /* ── Общий движок для игры 1 ─────────────────────────────── */
+  function runQuiz({ data, textEl, numEl, scoreEl, verdictEl, btns, finish, quote }) {
+    let i = 0, score = 0;
+    const t = document.getElementById(textEl);
+    const n = document.getElementById(numEl);
+    const s = document.getElementById(scoreEl);
+    const v = document.getElementById(verdictEl);
+
+    function render() {
+      t.textContent = quote ? '«' + data[i].t + '»' : data[i].t;
+      n.textContent = `${i + 1} / ${data.length}`;
+      btns.forEach(b => { b.className = ''; b.disabled = false; });
+    }
+
+    btns.forEach(btn => btn.addEventListener('click', () => {
+      if (btn.disabled) return;
+      const correct = btn.dataset.a === data[i].who;
+      btn.classList.add(correct ? 'right' : 'wrong');
+      if (correct) score++;
+      s.textContent = 'Верно: ' + score;
+      btns.forEach(b => b.disabled = true);
+
+      setTimeout(() => {
+        i++;
+        if (i < data.length) return render();
+        t.textContent = 'Испытание пройдено.';
+        n.textContent = 'Готово';
+        btns.forEach(b => b.style.display = 'none');
+        v.textContent = finish(score, data.length);
+      }, 800);
+    }));
+
+    render();
+  }
+
+  /* ── Подарок ─────────────────────────────────────────────── */
+  const giftBox = document.getElementById('gift-box');
+  const giftReveal = document.getElementById('gift-reveal');
+  function openGift() { giftBox.style.display = 'none'; giftReveal.classList.add('on'); }
+  giftBox.addEventListener('click', openGift);
+  giftBox.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openGift(); }
+  });
+
+  /* ── Приглашение: даты + убегающая кнопка ────────────────── */
+  const arena = document.getElementById('arena');
+  const no = document.getElementById('no');
+  const inviteVerdict = document.getElementById('invite-verdict');
+
+  document.querySelectorAll('#dates button').forEach(b => {
+    b.addEventListener('click', () => {
+      document.querySelectorAll('#dates button').forEach(x => x.classList.remove('right'));
+      b.classList.add('right');
+      inviteVerdict.textContent = `Записано: ${b.dataset.d}. Снасти на мне, креатин на тебе.`;
+      no.style.display = 'none';
+    });
+  });
+
+  const DODGES = ['Не могу', 'Занят', 'Спина', 'Алина не пустит', 'Ладно'];
+  let dodges = 0;
+
+  function dodge(e) {
+    if (dodges >= DODGES.length - 1) return;
+    e.preventDefault();
+    dodges++;
+    no.textContent = DODGES[dodges];
+    const pad = 8;
+    const maxX = arena.clientWidth - no.offsetWidth - pad;
+    const maxY = arena.clientHeight - no.offsetHeight - pad;
+    no.style.right = 'auto';
+    no.style.left = Math.max(pad, Math.random() * maxX) + 'px';
+    no.style.top = Math.max(pad, Math.random() * maxY) + 'px';
+  }
+  no.addEventListener('pointerdown', dodge);
+  no.addEventListener('touchstart', dodge, { passive: false });
+  no.addEventListener('click', () => {
+    if (dodges < DODGES.length - 1) return;
+    inviteVerdict.textContent = 'Кнопка «нет» сдалась раньше тебя. Выбирай дату.';
+  });
+})();
+</script>
+
+</body>
+</html>
